@@ -7,11 +7,22 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
-	<!-- Send every request through thi filter mapping -->
+	<!-- Send every request through this filter mapping -->
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+
+	<!-- Listener will bootstrap Spring Security Configuration -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Used by listener to find the location of security config file -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/config/security-config.xml</param-value>
+	</context-param>
 
 	<servlet>
 		<servlet-name>fitTrackerServlet</servlet-name>
