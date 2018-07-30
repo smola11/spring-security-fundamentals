@@ -10,11 +10,19 @@ public class LoginController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(ModelMap model) {
-		System.out.println("in the login method");
+		System.out.println("In the login method");
 
 		// This tells InternalResourceViewResolver inside servlet-config that we want
 		// it to look to WEB-INF/jsp directory for a ".jsp". This is going to look for
 		// login.jsp;
+		return "login";
+	}
+	
+	@RequestMapping(value = "/loginFailed", method = RequestMethod.GET)
+	public String loginFailed(ModelMap model) {
+		System.out.println("In the loginFailed method");
+		model.addAttribute("error", "true");
+
 		return "login";
 	}
 }

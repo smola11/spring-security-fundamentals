@@ -16,7 +16,7 @@
 <!-- When page loads up it is going to set focus to the j_username field -->
 <body onload="document.f.j_username.focus();">
 	<h3>Fitness Tracker Custom Login Page</h3>
-	<!-- This is going to check if there are any errors in our response and display them if present -->
+	<!-- This is going to check if there are any errors in our response and display them if present. It looks for the error attribute in the response-->
 	<c:if test="${not empty error}">
 		<div class="errorblock">
 			Your Login was unsuccessful. <br/> 
