@@ -63,8 +63,14 @@ body {
 			</sec:authorize>
 			<a class="btn btn-primary" href="addMinutes.html"> Add Exercise
 				Minutes » </a>
+				
+				<!-- When we push the button, Spring will call session.invalidate, eliminate any cookies we have etc. -->
+			<a class="btn btn-warning" href="j_spring_security_logout">
+				Logout >>
+			</a>
 		</div>
-		<div></div>
+		<div>
+		</div>
 	</div>
 
 	<script src="jquery-1.8.3.js">
