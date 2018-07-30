@@ -12,8 +12,8 @@ public class LoginController {
 	public String login(ModelMap model) {
 		System.out.println("in the login method");
 
-		// This tells InternalResourceViewResolver inside servlet-config to that we want
-		// ot look to WEB-INF/jsp directory for a ".jsp". This is going to look for
+		// This tells InternalResourceViewResolver inside servlet-config that we want
+		// it to look to WEB-INF/jsp directory for a ".jsp". This is going to look for
 		// login.jsp;
 		return "login";
 	}
