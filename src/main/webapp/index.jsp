@@ -50,13 +50,18 @@ body {
 			<div>
 				<h1>
 					Welcome to Fitness Tracker
-					<sec:authentication property="name" />!
+					<sec:authentication property="name" />
+					!
 				</h1>
 				<p>To get started, we need to enter a goal for what we want to
 					exercise for today.</p>
 			</div>
-			<a class="btn btn-primary" href="addGoal.html"> Add Goal » </a> <a
-				class="btn btn-primary" href="addMinutes.html"> Add Exercise
+			<a class="btn btn-primary" href="addGoal.html"> Add Goal » </a>
+			<!-- Only Admin will see that. If I have role admin I should see the button -->
+			<sec:authorize ifAnyGranted="ROLE_ADMIN">
+				<a class="btn btn-primary" href="editGoal.html"> Edit Goal » </a>
+			</sec:authorize>
+			<a class="btn btn-primary" href="addMinutes.html"> Add Exercise
 				Minutes » </a>
 		</div>
 		<div></div>
