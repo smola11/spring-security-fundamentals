@@ -17,12 +17,19 @@ public class LoginController {
 		// login.jsp;
 		return "login";
 	}
-	
+
 	@RequestMapping(value = "/loginFailed", method = RequestMethod.GET)
 	public String loginFailed(ModelMap model) {
 		System.out.println("In the loginFailed method");
 		model.addAttribute("error", "true");
 
 		return "login";
+	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(ModelMap model) {
+		System.out.println("In the logout method");
+
+		return "logout";
 	}
 }
