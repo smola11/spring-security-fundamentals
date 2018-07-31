@@ -11,18 +11,18 @@ import org.springframework.security.core.userdetails.User;
 
 public class FitnessPermissionEvaluator implements PermissionEvaluator {
 
-	private DataSource dataSource;
+	private DataSource datasource;
 
-	public DataSource getDataSource() {
-		return dataSource;
+	public DataSource getDatasource() {
+		return datasource;
 	}
 
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
+	public void setDatasource(DataSource datasource) {
+		this.datasource = datasource;
 	}
 
 	public boolean hasPermission(Authentication auth, Object targetDomainObject, Object permission) {
-		JdbcTemplate template = new JdbcTemplate(dataSource);
+		JdbcTemplate template = new JdbcTemplate(datasource);
 
 		Object[] args = { ((User) auth.getPrincipal()).getUsername(), targetDomainObject.getClass().getName(),
 				permission.toString() };
@@ -35,7 +35,6 @@ public class FitnessPermissionEvaluator implements PermissionEvaluator {
 		} else {
 			return false;
 		}
-
 	}
 
 	public boolean hasPermission(Authentication arg0, Serializable arg1, String arg2, Object arg3) {
