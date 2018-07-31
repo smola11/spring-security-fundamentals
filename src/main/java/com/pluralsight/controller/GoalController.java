@@ -2,6 +2,7 @@ package com.pluralsight.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,22 +22,24 @@ public class GoalController {
 		Goal goal = new Goal();
 		goal.setMinutes(10);
 		model.addAttribute("goal", goal);
-		
+
 		return "addGoal";
 	}
-	
+
+//	Only admins can access this
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "addGoal", method = RequestMethod.POST)
 	public String updateGoal(@Valid @ModelAttribute("goal") Goal goal, BindingResult result) {
-		
+
 		System.out.println("result has errors: " + result.hasErrors());
-		
+
 		System.out.println("Goal set: " + goal.getMinutes());
-		
-		if(result.hasErrors()) {
+
+		if (result.hasErrors()) {
 			return "addGoal";
 		}
-		
+
 		return "redirect:index.jsp";
 	}
-	
+
 }
