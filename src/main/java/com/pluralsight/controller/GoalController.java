@@ -26,8 +26,8 @@ public class GoalController {
 		return "addGoal";
 	}
 
-//	Only admins can access this
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+//	Only admins can access this and we need a permission "createGoal" for #goal object
+	@PreAuthorize("hasRole('ROLE_ADMIN') and hasPermission(#goal, 'createGoal')")
 	@RequestMapping(value = "addGoal", method = RequestMethod.POST)
 	public String updateGoal(@Valid @ModelAttribute("goal") Goal goal, BindingResult result) {
 
